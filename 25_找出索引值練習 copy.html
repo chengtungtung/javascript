@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<style>
+.zoo {
+   background-color: blanchedalmond;
+   width: 100px;
+   margin: 10px;
+}
+.border {
+   border: 2px solid gray;
+}
+</style>
+<script>
+let animals = ['獅子', '老虎', '大象', '斑馬', '老虎', '長頸鹿']
+
+
+function query(value) {
+   let index = -1
+   let isNotFound = true
+   while (true) {
+       index = animals.indexOf(value, index + 1)
+       if (index == -1) {
+           break
+       } else {
+           isNotFound = false
+           console.log(index)
+       }
+   }
+   if (isNotFound) {
+       console.log('not found')
+   }
+}
+
+
+window.onload = function() {
+   let html = ''
+   animals.forEach(function(animal) {
+       html += `<div class='zoo'>${animal}</div>`
+   })
+   zoo.innerHTML = html
+
+
+   search.onclick = function() {
+       query(searchText.value)
+       let boxes = document.getElementsByClassName('zoo')
+       for(index in animals) {
+           boxes[index].classList.remove('border')
+           if (animals[index] == searchText.value) {
+               boxes[index].classList.add('border')
+           }
+       }
+   }
+}
+</script>
+<body>
+   <div>
+       <input id="searchText" placeholder="Input animal name">
+       <button id="search">search</button>
+   </div>
+   <div id="zoo"></div>
+</body>
+</html>
+

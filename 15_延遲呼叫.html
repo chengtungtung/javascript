@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function test() {
+        console.log('hello, world')
+    }
+    window.onload = function () {
+        bn.onclick = function () {
+            // setTimeout('test()', 5000) // 按下去後，過5秒鐘才會呼叫 // 由瀏覽器呼叫function
+            // setInterval('test()', 5000) // 按下去後，每5秒鐘就會呼叫一次，會一直呼叫 // 由瀏覽器呼叫function
+            
+            console.log('hi') // 按下去後，'hi'會先印，5秒鐘後才會印'hello, world'
+        }
+        
+
+    }
+</script>
+
+<body>
+    <button id="bn">click</button>
+
+</body>
+
+</html>

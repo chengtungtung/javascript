@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function loadDoc() {
+        mybutton.onclick = function () {
+            mylabel.innerHTML = '<span style="color: green;">Hello, World</span>'
+        }
+    }
+</script>
+
+<body onload="loadDoc()">
+    <button id="mybutton">click</button>
+    <p></p>
+    <label id="mylabel">aaa</label>
+
+</body>
+
+</html>

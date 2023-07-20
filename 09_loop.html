@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload=function(){
+        let arr = ['a','b','c','d']
+        document.write('in傳回的是索引值:<br>')
+        for(index in arr){
+            document.write(index +'<br>')
+        }
+        // in傳回的是索引值
+        
+        document.write('of傳回的是元素:<br>')
+        for(index of arr){
+            document.write(index +'<br>')
+        }
+        // of傳回的是元素
+
+    }
+</script>
+<body>
+    
+</body>
+</html>

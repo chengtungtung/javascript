@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let i = 20 // 全域變數，有效範圍為整個網頁
+    function f() {
+        let i = 10 //區域變數，有效範圍為f()，而全域和區域重疊時，區域變數優先
+        console.log(`in function ${i}`)
+        // 可以印出in function 10
+    }
+
+    f()
+    console.log(`outside function ${i}`)
+    // 沒有宣告全域變數時，會印不出來10是因為i=10是在f()裡面(區域變數)
+    // 但宣告全域變數i=20後，會印出20
+
+    //------------------------------------------------------------
+    let j = 20
+    function f1() {
+        j = 10
+        console.log(`in function ${j}`)
+    }
+
+    f1()
+    console.log(`outside function ${j}`)
+    // 會印出10 10，是因為都是同一個i，10取代20
+
+    //----------------------------------------------------
+    a = 20
+    function f2() {
+        let a = 10
+        console.log(`in function ${a}`)
+    }
+
+    f2()
+    console.log(`outside function ${a}`)
+    //會印出10 20，會有兩個不同的變數a 
+    
+    //---------------------------------------------------
+    b = 20
+    function f3(b=0) {
+        b = 10
+        console.log(`in function ${b}`)
+    }
+
+    f3()
+    console.log(`outside function ${b}`)
+    // 會印出10/20，in function 10是抓參數b=0，b=10會覆蓋b=0，
+    // outside function 20是抓全域變數b = 20，所以最後會有兩個變數b
+    
+    //----------------------------------------------------
+    c = 20
+    function f4(c=0) {
+        c = 10
+        console.log(`in function ${c}`)
+    }
+
+    f4(c)
+    console.log(`outside function ${c}`)
+    // 會印出10/20
+
+    //-----------------------------------------------------
+    d = [20,30,40]
+    function f5(d) {
+        d[0] = 10
+        console.log(`in function ${d}`)
+    }
+
+    f5(d)
+    console.log(`outside function ${d}`)
+    // 會印出10,30,40/10,30,40
+    // 純量變數只會有一個值。ex.整數、字串、布林值；而純量變數的資料傳遞方式為call-by-value
+    // 複合變數會有很多值或屬性。ex.陣列、物件；而複合變數的資料傳遞方式為call-by-address
+    //-----------------------------------------------------
+    
+
+</script>
+
+<body>
+
+</body>
+
+</html>

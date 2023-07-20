@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+let number = {
+    set value(n){
+        this._value = n * 2
+        // 習慣性命名會加底線，_value是區域變數
+    },
+
+    get value(){
+        return this._value
+    }
+}
+
+number.value=20
+console.log(number.value)
+
+</script>
+<body>
+    
+</body>
+</html>

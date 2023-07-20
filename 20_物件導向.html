@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // function當物件來用的時候，命名名稱開頭為大寫
+    function Person(name, age) {
+        this.name = name
+        this.age = age
+        // 原寫法
+        this.email = function(){
+            return `${name}@gmail.com`
+        }
+        // 省略後的寫法
+        this.email1 = () => `${name}@gmail.com`
+    }
+    
+    // prototype 擴充屬性
+    Person.prototype.hairColor = 'black' // 在Person擴充了一個屬性hairColor
+    
+    // 繼承
+    function NewPerson(name, age , birthday) {
+        Person.call(this, name, age)
+        this.birthday = birthday
+    }
+    
+
+    let p1 = new Person('David', 30)
+    let p = new Person('Betty', 27)
+    console.log(p1.name)
+    console.log(p1.email())
+    console.log(p1.email1())
+    console.log(p1.hairColor)
+
+    // 繼承後
+    let p3 = new NewPerson('Mei', 20, '2013/5/3')
+    console.log(p3.name)
+    console.log(p3.email())
+    console.log(p3.hairColor) // hairColor是prototype，不會被繼承
+    console.log(p3.birthday)
+
+    // 存取等級：
+    // 只有public和private這兩個存取等級
+    // 預設是public，而想用private的話，前面加#
+    class Temperature{
+        #value
+        constructor(value){
+            this.#value = value
+        }
+
+        #method(){
+            alert(this.#value)
+        }
+    }
+
+    // 在屬性和方法前加上static，不需產生實體即可呼叫使用
+    
+
+</script>
+
+<body>
+
+</body>
+
+</html>

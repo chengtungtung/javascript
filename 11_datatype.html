@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function(){
+        // 資料型態 NaN
+        console.log(parseInt('桌子'))
+        // 會印出NaN
+
+        // 判斷是不是NaN
+        console.log(isNaN(parseInt('桌子')))
+        // 會印出 true
+
+        console.log(5/0)
+        // 會印出Infinity (Infinity在JS裡是保留字)
+        
+        // 判斷是否為Infinity
+        console.log((5/0) == Infinity)
+
+        let a = {
+            name : 'David',
+            age : 30
+        }
+        console.log(a.name)
+        console.log(a.age)
+    }
+</script>
+<body>
+    
+</body>
+</html>

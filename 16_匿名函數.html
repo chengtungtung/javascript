@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // 變數放入function
+    function f1() {
+        for (i = 0; i < 3; i++) {
+            console.log(`具名函數${i} : Hello`)
+        }
+    }
+
+    let a = f1
+    a()
+    // 變數a放入function f1()後，f1()多了一個名字a()，所以呼叫a()或f1()都可以
+
+    //----------------------------------------------------------------------
+    // 演變出匿名函數
+    let a1 = function () {
+        for (i = 0; i < 3; i++) {
+            console.log(`匿名函數${i} : Hello`)
+        }
+    }
+
+    a1()
+
+    //-----------------------------------------------------------------------
+
+    function f2() {
+        for (i = 0; i < 3; i++) {
+            console.log(`應用${i} : Hello`)
+        }
+    }
+    function test(a){
+        a()
+    }
+
+   test(f2)
+
+   //-------------------------------------------------------------------------
+   
+    function add(a, b, complete){
+        complete(a+b)
+    }
+
+    add(5,5,function(answer){
+        console.log(answer)
+    })
+
+   //-------------------------------------------------------------------------
+   
+
+
+
+
+</script>
+
+<body>
+<button id="bn">click</button>
+</body>
+
+</html>

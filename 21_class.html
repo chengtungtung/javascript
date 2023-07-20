@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // function Person(name, age) {
+    //     this.name = name
+    //     this.age = age
+    //     this.email = () => `${name}@gmail.com`
+    // }
+
+class Person{
+    // 建構子
+    constructor(name, age){
+        this.name = name
+        this.age = age
+    }
+
+    // 方法 (但這裡的前面不加function)
+    email(){
+        return `${this.name}@gmail.com`
+    }
+}
+
+// 繼承
+class NewPerson extends Person{
+    constructor(name, age, birthday){
+        super(name, age)
+        this.birthday = birthday
+    }
+}
+
+
+let p1 = new Person('David', 30)
+console.log(p1.name)
+console.log(p1.email())
+
+let p2 = new NewPerson('Betty', 27, '2007/5/1')
+console.log(p2.name)
+console.log(p2.birthday)
+
+</script>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // map 是一個二維陣列
+    var a = new Map([
+        ['p1', 'abc'],
+        ['p2', 'def']
+    ])
+
+    console.log(a.get('p2'))
+    a.set('p3', { name: 'David', age: 30 })
+    // { name: 'David', age: 30 }是object
+    console.log(a.get('p3').name)
+
+</script>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let w
+    window.onload = function(){
+        bn1.onclick = function(){
+             location.href = 'https://maps.google.com'
+            // location指網址列
+        }
+        bn2.onclick = function(){
+            w = window.open('https://www.apple.com/' , '_blank')
+            // '_blank'代表每按一下就會跳出一個新視窗，_blank為預設
+            // '_self'代表按下去後會在原視窗顯示
+        }
+        bn3.onclick = function(){
+            w.close()
+            // 關閉視窗
+        }
+
+    }
+</script>
+<body>
+    <button id="bn1">bn1</button>
+    <button id="bn2">bn2</button>
+    <button id="bn3">bn3</button>
+</body>
+</html>
