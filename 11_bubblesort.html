@@ -8,7 +8,9 @@
 <script>
     window.onload=function(){
         let arr = [5, 7, 2, 1, 7, 3, 2, 10, 5, 15]
-        // 泡泡排序法
+
+        // 排序方法有兩種
+        // 1. 泡泡排序法
         // for(i=0;i<arr.length-1;i++){
         //     for(j=i+1;j<arr.length;j++){
         //         if (arr[i]>arr[j]){
@@ -19,7 +21,7 @@
         //     }
         // }
 
-        // 內建的排序方法
+        // 2. 內建的排序方法
         arr.sort(function(a,b){
             return b - a
         })
