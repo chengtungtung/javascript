@@ -12,7 +12,18 @@
             let b = parseInt(bb.value)
             result.innerText=`${a} + ${b} = ${a + b}`
             // 如果是小數用parseInt轉成整數的話，會無條件捨去
+            // id值.value => 取得input的value
         }
+
+        bn2.onclick = function(){
+            let a = parseFloat(cc.value)
+            let b = parseFloat(dd.value)
+            result2.innerText=`${a} + ${b} = ${a + b}`
+        }
+
+
+
+
     }
 </script>
 <body>
@@ -20,5 +31,10 @@
     Number 2 : <input id="bb"><p></p>
     <button id="bn">add</button><p></p>
     得到的結果：<label id="result"></label>
+    <br><br><hr>
+    Float 1 : <input id="cc"><p></p>
+    Float 2 : <input id="dd"><p></p>
+    <button id="bn2">add</button><p></p>
+    得到的結果：<label id="result2"></label>
 </body>
 </html>
