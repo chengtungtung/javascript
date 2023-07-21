@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script> 
+// 在body裡寫javascript的程式碼的方法
+
+function clickHandle(){
+    // 按下button後會做的事
+    // 假設按下button後想在id為mylabel的label出現有顏色文字，有四種方式：
+    // 1. document.getElementById('id值').innerHTML => 可以寫入html標籤
+    // document.getElementById('mylabel').innerHTML = '<span style="color: red">Hello, World</span>'
+    
+    // 2. document.getElementById('id值').innerText
+    document.getElementById('mylabel').innerText = 'Hello, World'
+    // innerHTML和innerText此兩方法效果一樣，但innerHTML可以寫入標籤調整
+   
+    // 3. Id值.innerHTML (此方法較新)
+    // mylabel.innerHTML='<span style="color: red;">Hello, World</span>' // 此方法較新
+
+    // 4. Id值.innerText
+}
+</script>
+<body>
+    <!-- onmouseenter：滑鼠碰到時 -->
+    <!-- onmouseleave：滑鼠離開時 -->
+    <!-- onmousemove：滑鼠在區塊內移動時 -->
+
+    <button onclick="clickHandle()">click</button><p></p> 
+    <!-- 上方是同時有html和javascript的程式碼 -->
+    <label id="mylabel">aaa</label>
+    
+</body>
+</html>
