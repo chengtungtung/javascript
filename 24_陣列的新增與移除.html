@@ -6,11 +6,43 @@
     <title>Document</title>
 </head>
 <script>
-    let arr = ['獅子', '老虎', '大象']
+    let arr = ['獅子', '老虎', '大象' ,'猩猩']
     document.write(arr + '<br>')
-    arr.unshift('斑馬')
-    arr.push('長頸鹿')
-    document.write(arr)
+    document.write('<hr>')
+
+    let newarr1 = arr.unshift('斑馬') // 新增在前面
+    document.write(newarr1 + '<br>')
+    document.write('<hr>')
+
+    let newarr2 = arr.push('長頸鹿') // 新增在後面
+    document.write(newarr2 + '<br>')
+    document.write('<hr>')
+
+    let newarr3 = arr.shift('獅子') // 移除前面
+    document.write(newarr3 + '<br>')
+    document.write('<hr>')
+
+    let newarr4 = arr.pop('猩猩') // 移除後面
+    document.write(newarr4 + '<br>')
+    document.write('<hr>')
+    
+    //-------------------------------------------------
+    
+    arr.unshift('斑馬') // 新增在前面
+    document.write(arr + '<br>')
+    document.write('<hr>')
+
+    arr.push('長頸鹿') // 新增在後面
+    document.write(arr + '<br>')
+    document.write('<hr>')
+
+    arr.shift() // 移除前面
+    document.write(arr + '<br>')
+    document.write('<hr>')
+
+    arr.pop() // 移除後面
+    document.write(arr + '<br>')
+    document.write('<hr>')
     
 </script>
 <body>
