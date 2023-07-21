@@ -6,16 +6,18 @@
     <title>Document</title>
 </head>
 <script>
-    //'use strict' // 代表底下都要宣告才能執行
+    //'use strict' // 代表底下都要宣告才能執行，要放在全域或區域的第一行才有作用
+    
     window.onload=function(){
         // JS的變數宣告有三種形式
+        // 可以不用宣告，隨叫隨用，不宣告就是預設var
         // var可以重複宣告，不寫的話，var就是預設
         // let不能重複宣告，平時使用let比較好，較嚴謹
         // const是常數
         a = 10
         let b = 30
         document.write(`${a} + ${b} = ${a + b}`)
-        // `叫back-tick
+        // ``叫back-tick，可以多行
         let c = '10'
         let d = '30'
         document.write(`${c} + ${d} = ${c + d}`)
