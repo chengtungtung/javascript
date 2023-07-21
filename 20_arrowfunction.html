@@ -13,9 +13,16 @@
     // 只有一行的話return可以省略
 
     let arr = [5, 3, 2, 7, 6, 4]
-    let result = arr.filter((value) => value >= 5 )
+    // 常見語法
+    let result = arr.filter(function (value) {
+        return value >= 5
+    })
+
+    // 簡略語法
+    let result1 = arr.filter((value) => value >= 5 )
 
     console.log(result)
+    console.log(result1)
 </script>
 
 <body>
