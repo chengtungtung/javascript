@@ -13,19 +13,16 @@
         value(ans)
     }
 
-
     function newadd(a, b, complete) {
         let ans = a + b
         complete(`${a} + ${b} = ${ans}`, ans)
     }
-
 
     add(5, 10, function (str) {
         console.log(str)
     }, function (ans) {
         console.log(ans)
     })
-
 
     newadd(10, 20, function (statement, value) {
         console.log(statement)
