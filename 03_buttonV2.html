@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<script>
-    function loadDoc() {
-        mybutton.onclick = function () {
-            mylabel.innerHTML = '<span style="color: green;">Hello, World</span>'
-        }
-    }
-</script>
 
-<body onload="loadDoc()">
+<body>
     <button id="mybutton">click</button>
     <p></p>
+    <!-- 上方寫法可以把html和javascript的程式碼各自分開 -->
     <label id="mylabel">aaa</label>
 
 </body>
+<script>
+    // 此方式可以讓body裡的html和javascript的程式碼各自分開，而此方法一定要在body後面，執行順序的問題
+    // 把這段放在body上面會找不到label元件
+    mybutton.onclick = function () {
+        mylabel.innerHTML = '<span style="color: red;">Hello, World</span>'
+    }
+</script>
 
 </html>

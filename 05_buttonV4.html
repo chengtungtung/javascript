@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script> // 此方法為較主流寫法
+    window.onload=function() {
+        mybutton.onclick=function(){
+            // console.log('test ok')
+            mylabel.innerHTML = '<span style="color: red;">Hello, World</span>'
+
+        }
+        // 
+        // mybutton.onclick = function () {
+        //     mylabel.innerHTML = '<span style="color: orange;">Hello, World</span>'
+        // }
+        //會有後蓋前的問題
+
+        mybutton.addEventListener('click',function(){
+            mylabel2.innerHTML = '<span style="color: green;">Hello, World</span>'
+        }) // 避免後蓋前的問題
+        
+    }
+</script>
+
+<body>
+    <button id="mybutton">click</button>
+    <p></p>
+    <label id="mylabel">aaa</label>
+    <p></p>
+    <label id="mylabel2">aaa</label>
+
+</body>
+
+</html>
