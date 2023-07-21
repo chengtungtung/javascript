@@ -6,13 +6,17 @@
     <title>Document</title>
 </head>
 <script>
-    let arr = ['獅子', '大象', '老虎', '斑馬', '老虎', '長頸鹿' ]
+    let arr = ['獅子', '大象', '老虎', '斑馬', '老虎', '長頸鹿', '老虎']
     document.write(arr.indexOf('ooxx')+'<br>')
     // 會印出-1 ，代表陣列裡面沒有
     document.write(arr.indexOf('老虎')+'<br>')
     // 會印出 2 ，但第二個老虎抓不到
     document.write(arr.indexOf('老虎',2+1)+'<br>')
-    // 會印出 4 ，抓到了第二個老虎
+    // 會印出 4 ，抓到了第二個老虎，老虎代表想要抓的字串，2代表從哪個索引值開始找，+1為固定值
+    
+    // 陣列反向 陣列.reverse()
+    let newarr = arr.reverse()
+    document.write(newarr)
 
 
     
