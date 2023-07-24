@@ -20,14 +20,18 @@
 
         bn.onclick = function () {
             // AJAX
-            fetch('https://raw.githubusercontent.com/kirkchu/mongodb/main/demo.json')
+            fetch('https://raw.githubusercontent.com/kirkchu/mongodb/main/aqiv2.json')
                 .then(function (response) {
                     return response.json()
                 })
                 .then(function (data) {
                     let s = '<ul>'
-                    data.forEach(function (item) {
-                        s += `<li>${item.name}, ${item.age}歲</li>`
+                    test = data['records']
+                    test.forEach(function (item) {
+                        s += `<li>縣市：${item.county}</li>`
+                        s += `<li>地區：${item.sitename}</li>`
+                        s += `<li>aqi：${item.aqi}</li>`
+                        s += `<li>狀態：${item.status}</li>`
                     })
                     s += '</ul>'
                     content.innerHTML = s
@@ -39,8 +43,7 @@
 
 <body>
     <div id="date"></div>
-    <button id="bn">click</button>
-    <p></p>
+    <button id="bn">click</button><p></p>
     <div id="content"></div>
 </body>
 
