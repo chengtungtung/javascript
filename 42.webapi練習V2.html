@@ -13,7 +13,6 @@
             return `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
         }
 
-
         const color = function (aqi) {
             aqi = parseInt(aqi)
             if (aqi < 20) return 'green'
@@ -23,7 +22,6 @@
             if (aqi < 300) return 'purple'
             if (aqi < 1000) return 'maroon'
         }
-
 
         date_now.innerText = now()
         setInterval(function () {
