@@ -5,8 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            font-size: 18px;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 2px solid black;
+
+        }
+
+        th {
+            color: darkcyan;
+        }
+
+        .border {
+            background-color: bisque;
+        }
+    </style>
 </head>
 <script>
+    function query(value) {
+        let index = -1
+        let isNotFound = true
+        while (true) {
+            index = test.indexOf(value, index + 1)
+            if (index == -1) {
+                break
+            } else {
+                isNotFound = false
+                console.log(index)
+            }
+        }
+        if (isNotFound) {
+            console.log('not found')
+        }
+    }
+
     window.onload = function () {
         const now = function () {
             let d = new Date()
@@ -25,17 +64,54 @@
                     return response.json()
                 })
                 .then(function (data) {
-                    let s = '<ul>'
+                    let s = `<table>
+                        <tr>
+                            <th>縣市</th>
+                            <th>地區</th>
+                            <th>aqi</th>
+                            <th>狀態</th>
+                        </tr>`
+
+                    color = ''
                     test = data['records']
                     test.forEach(function (item) {
-                        s += `<li>縣市：${item.county}</li>`
-                        s += `<li>地區：${item.sitename}</li>`
-                        s += `<li>aqi：${item.aqi}</li>`
-                        s += `<li>狀態：${item.status}</li>`
+                        aqi = parseInt(item.aqi)
+                        s += `<tr><td class="city">${item.county}</td>`
+                        s += `<td>${item.sitename}</td>`
+                        if (aqi <= 5) {
+                            color = 'green'
+                        } else if (aqi <= 10) {
+                            color = 'yello'
+                        } else if (aqi <= 15) {
+                            color = 'orange'
+                        } else if (aqi <= 20) {
+                            color = 'red'
+                        } else if (aqi <= 30) {
+                            color = 'purple'
+                        } else if (aqi <= 50) {
+                            color = 'darkred'
+                        } else {
+                            color = 'black'
+                        }
+
+                        s += `<td><span style="color: ${color};">${item.aqi}</span></td>`
+                        s += `<td><span style="color: ${color};">${item.status}</span></td></tr>`
                     })
-                    s += '</ul>'
+                    s += '</table>'
                     content.innerHTML = s
+
                 })
+
+            search.onclick = function () {
+                query(searchText.value)
+                let boxes = document.getElementsByClassName('city')
+                for (index in test) {
+                    boxes[index].classList.remove('border')
+                    if (test[index] == searchText.value) {
+                        boxes[index].classList.add('border')
+                    }
+                }
+            }
 
         }
     }
@@ -43,8 +119,19 @@
 
 <body>
     <div id="date"></div>
-    <button id="bn">click</button><p></p>
+    <p></p>
+    <div>
+        <input id="searchText" placeholder="Input city name">
+        <button id="search">search</button>
+    </div>
+    <p></p>
+
+    <button id="bn">click</button>
+    <p></p>
     <div id="content"></div>
+    <hr>
+
+
 </body>
 
 </html>
