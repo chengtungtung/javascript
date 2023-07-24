@@ -11,7 +11,7 @@
             a = parseInt(a)
             b = parseInt(b)
 
-            if(isNaN(a) || isNaN(b)){
+            if(String(num1) != a || String(num2) != b){  // 判斷使用者輸入的是否為數字
                 reject('請輸入數字')
             }
             if (b == 0) {
@@ -31,12 +31,16 @@
                     row_data.innerHTML = ans
                     return Math.round(ans * 100) / 100 // 四捨五入
                 })
-                .then(function (ans) {
+                .then(function (ans) {      // 多個then，多層處理
                     result.innerHTML = ans
                 })
-                .catch(function (reason) {
+                .catch(function (reason) {  // catch只能有一個
                     result.innerHTML = reason
                 })
+                .finally(function(){    // finally只能有一個，可寫可不寫
+
+                })
+                // 以上全部可以寫成一行，概念像java的try...catch
 
         }
     }
