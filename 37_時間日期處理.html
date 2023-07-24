@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function () {
+        // let d = Date()  // date傳回來是字串
+        // container.innerHTML = d.toLocaleString() // 轉成當地時間(也就是電腦時間)
+        // container.innerHTML = d.toUTCString() // UTC時間(世界協調時間) 
+
+        let start_time = Date.now()
+        bn.onclick = function(){
+            // container.innerHTML = (Date.now() - start_time) / 1000
+            var myDate = new Date ( 1690162956 * 1000); // 1690162956為epoch time
+            container.innerHTML = myDate.toLocaleString('zh-TW' , {timeZone:'America/New_York'}) // 轉換成紐約時間
+        }
+    }
+</script>
+
+<body>
+    <button id="bn">click</button>
+    <div id="container"></div>
+</body>
+
+</html>
