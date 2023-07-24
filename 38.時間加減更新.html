@@ -8,14 +8,25 @@
 </head>
 <script>
     window.onload = function () {
+        // 時間加減
         bn.onclick = function () {
             let ts = Date.now() + 2 * 60 * 60 * 1000 // 加兩小時
             container.innerHTML = (new Date(ts)).toLocaleString()
         }
+
+        // 取得想要的時間單位
         bn1.onclick = function () {
             let d = new Date()
-            container.innerHTML = d.getFullYear()
+            // container.innerHTML = d.getFullYear() 
+            container1.innerHTML = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+            
         }
+
+        // 每秒鐘更新一次時間
+        setInterval(function(){
+            let a = new Date()
+            container2.innerHTML = `${a.getHours()}:${a.getMinutes()}:${a.getSeconds()}`
+        },1000)
     }
 </script>
 
@@ -23,6 +34,8 @@
     <button id="bn">click</button>
     <button id="bn1">click1</button>
     <div id="container"></div>
+    <div id="container1"></div>
+    <div id="container2"></div>
 </body>
 
 </html>
