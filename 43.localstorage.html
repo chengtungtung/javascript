@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function(){
+        save.onclick = function(){
+            localStorage.setItem('mykey',text.value) // 儲存資料，mykey是localStorage的名稱
+            // 會在本機儲存起來
+        }
+        
+        load.onclick = function(){
+            // alert(localStorage.getItem('aaa'))
+            // 若localstorage沒有aaa這個資料，會回傳null
+            data.innerText = localStorage.getItem('mykey')
+            
+
+        }
+
+    }
+</script>
+<body>
+    <input id="text"><p></p>
+    <button id="save">Save</button>
+    <button id="load">Load</button>
+    <p></p>
+    <div id="data"></div>
+    
+</body>
+</html>
