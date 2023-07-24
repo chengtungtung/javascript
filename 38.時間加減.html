@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function () {
+        bn.onclick = function () {
+            let ts = Date.now() + 2 * 60 * 60 * 1000 // 加兩小時
+            container.innerHTML = (new Date(ts)).toLocaleString()
+        }
+        bn1.onclick = function () {
+            let d = new Date()
+            container.innerHTML = d.getFullYear()
+        }
+    }
+</script>
+
+<body>
+    <button id="bn">click</button>
+    <button id="bn1">click1</button>
+    <div id="container"></div>
+</body>
+
+</html>
