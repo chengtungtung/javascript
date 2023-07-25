@@ -1,12 +1,14 @@
 class AQI {
+    // 屬性
+    // static屬性，也就是一開始就有記憶體存放此變數
     static KEY = 'mykey1'
  
- 
+    // 建構子
     constructor(elementId) {
         this.element = document.getElementById(elementId)
-    }
+    } // 第46支程式會用到要填入參數的物件創建
  
- 
+    // 方法
     show(jsonObj) {
         // 辨別aqi值的大小，根據數值給予不同顏色
         const color = function(aqi) {
@@ -19,7 +21,7 @@ class AQI {
             if (aqi < 1000) return 'maroon'
         }
  
-        // 
+        // 將jsonObj.records中的aqi值做排序
         jsonObj.records.sort(function(a, b) {
             return parseInt(a.aqi) - parseInt(b.aqi)
         })
