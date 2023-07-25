@@ -8,11 +8,14 @@
     <script src="libaqi.js"></script>
 </head>
 <script>
-    // 每秒更新時間
+    // 顯示每秒更新時間
     function showCurrentTime() {
         let d = new Date()
         date_now.innerText = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
-        setInterval(showCurrentTime, 1000)
+        setInterval(function () {
+            let d = new Date()
+            date_now.innerText = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+        }, 1000)
     }
 
 
@@ -20,20 +23,20 @@
         showCurrentTime()
         let aqi = new AQI('aqi_content')
         aqi.getAQIFromLocalStorage()
-        .then(function(jsonObj){
-            if(aqi.reloadIfNeeded(jsonObj)){
-                throw 'get data from localstorage but too old'
-            }else{
-                console.log('get data from localstorage')
-                aqi.show(jsonObj)
-            }
-        })
-        .catch(function(reason){
-            aqi.getAQIFromURL(function(jsonObj){
-                console.log('read data from URL')
-                aqi.show(jsonObj)
+            .then(function (jsonObj) {
+                if (aqi.reloadIfNeeded(jsonObj)) {
+                    throw 'get data from localstorage but too old'
+                } else {
+                    console.log('get data from localstorage')
+                    aqi.show(jsonObj)
+                }
             })
-        })
+            .catch(function (reason) {
+                aqi.getAQIFromURL(function (jsonObj) {
+                    console.log('read data from URL')
+                    aqi.show(jsonObj)
+                })
+            })
 
     }
 

@@ -8,6 +8,7 @@ class AQI {
  
  
     show(jsonObj) {
+        // 辨別aqi值的大小，根據數值給予不同顏色
         const color = function(aqi) {
             aqi = parseInt(aqi)
             if (aqi < 50)   return 'green'
@@ -18,7 +19,7 @@ class AQI {
             if (aqi < 1000) return 'maroon'
         }
  
- 
+        // 
         jsonObj.records.sort(function(a, b) {
             return parseInt(a.aqi) - parseInt(b.aqi)
         })
