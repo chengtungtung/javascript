@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="libaqi.js"></script>
 </head>
 <script>
     // Initialize and add the map
     let map;
-   
     let gjsonObj;
 
     async function initMap() {
@@ -36,8 +36,18 @@
 
 
     function makeMarkerView(title, position, glyph) {
+        const color = function(aqi) {
+            aqi = parseInt(aqi)
+            if (aqi < 10)   return 'green'
+            if (aqi < 20)  return 'yellow'
+            if (aqi < 30)  return 'orange'
+            if (aqi < 200)  return 'red'
+            if (aqi < 30)  return 'purple'
+            if (aqi < 1000) return 'maroon'
+        }
+
         const pinView = new google.maps.marker.PinView({ // 可以修改紅色圖標的外觀
-            background: "orange",
+            background: color(parseInt(glyph)),
             glyph: glyph   // 在紅色圖標上可以顯示的數字
         });
 
@@ -49,6 +59,7 @@
         });
     }
 
+    // 寫一個方法來尋訪jsonObj的資料，並把各個資料變成參數再放進別的方法
     function locationHandle(jsonObj) {
         jsonObj.records.forEach(function (record) {
             let county = record.county
@@ -79,6 +90,7 @@
             .catch(function (reason) {
                 aqi.getAQIFromURL(function (jsonObj) {
                     console.log('read data from URL')
+                    gjsonObj = jsonObj
                 })
             })
     }
