@@ -34,8 +34,9 @@
     }
 
 
-
+    // 將jsonObj的資料放進這個方法，顯示在網頁的地圖
     function makeMarkerView(title, position, glyph) {
+        // 判斷aqi的值，介於哪個區間，並更改圖標顏色顯示在地圖上
         const color = function(aqi) {
             aqi = parseInt(aqi)
             if (aqi < 10)   return 'green'
@@ -46,11 +47,13 @@
             if (aqi < 1000) return 'maroon'
         }
 
+        // 更改圖標顏色
         const pinView = new google.maps.marker.PinView({ // 可以修改紅色圖標的外觀
             background: color(parseInt(glyph)),
             glyph: glyph   // 在紅色圖標上可以顯示的數字
         });
 
+        
         new google.maps.marker.AdvancedMarkerElement({  //  紅色圖標，由於要變成全域變數，原本前面的const要刪掉
             map: map,
             position: position, // 紅色圖標會跟著座標
