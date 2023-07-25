@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // Initialize and add the map
+    let map;
+    let marker;  // 變成全域變數
+
+    async function initMap() {
+        // The location of Uluru
+        const position = { lat: 24.157469859903532, lng: 120.66612112482075 }; // 地點的座標位置
+        const position1 = { lat: 24.159757933161274, lng: 120.67013659790294 }; // 地點的座標位置
+        
+        // Request needed libraries.
+        //@ts-ignore
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+
+        // The map, centered at Uluru
+        map = new Map(document.getElementById("map"), {
+            zoom: 15, // 地圖可視範圍可以放多大的值，最大差不多到20
+            center: position, // // 地圖會以座標為中心
+            mapId: "DEMO_MAP_ID",
+        });
+
+        // The marker, positioned at Uluru
+        marker = new AdvancedMarkerView({  //  紅色圖標，由於要變成全域變數，原本前面的const要刪掉
+            map: map,
+            position: position, // 紅色圖標會跟著座標
+            title: "國立自然科學博物館", // 游標移過去紅色圖標會產生文字
+        });
+
+        marker = new AdvancedMarkerView({  //  紅色圖標，由於要變成全域變數，原本前面的const要刪掉
+            map: map,
+            position: position1, // 紅色圖標會跟著座標
+            title: "肉蛋吐司", // 游標移過去紅色圖標會產生文字
+        });
+
+    }
+
+    window.onload = function () {
+        initMap();
+        bn.onclick = function () {
+            let position = { lat: 24.151456640596326, lng: 120.66394885579273 };
+            marker.position = position;
+            marker.title = "勤美"
+            // map.setCenter(position); // 地圖會直接跳去指定位置
+            map.panTo(position) // 地圖會滑過去指定位置
+        }
+
+        bn1.onclick = function () {
+            let position = { lat: 24.150741190310896, lng: 120.65100344230298};
+            marker.position = position;
+            marker.title = "資展國際"
+            // map.setCenter(position);
+            map.panTo(position)
+        }
+
+
+    }
+
+
+
+</script>
+<style>
+    /* 地圖的大小 */
+    #map {  
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+    }
+</style>
+
+<body>
+    <div id="map"></div>
+    <p></p>
+
+    <button id="bn">誠品</button>
+    <button id="bn1">資展國際</button>
+
+
+
+    <script>(g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+        ({ key: "AIzaSyDYSHtlpf9gIaKU36Cv3dkKHnR6YL3HA6k", v: "beta" });</script>
+
+
+
+</body>
+
+</html>
