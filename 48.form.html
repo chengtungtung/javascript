@@ -18,6 +18,26 @@
             }
         }
 
+        uid.onblur = function(){   // onblur是攔截的作用，只要輸入點離開uid輸入框時，就會呼叫此方法
+            // marker.innerText = '' // 先清掉'❌'或'✅'，通常會用轉圈圈的圖案
+            // marker.innerHTML = '<img src="./img/轉圈圈圖示.gif" width=40px>' // 換轉圈圈的圖案
+            marker.innerHTML = '<img src="https://preview.520cc.com/58pic/36/28/62/99a58PIC8d958PICzSZI11t0y_PIC2018.gif!gif_520cc_35" width=40px>' // 換轉圈圈的圖案
+            let value = uid.value
+            fetch('http://10.0.101.248/duplicatecheck.php?uid=' + value) // 要先將資料傳給後端做辨識
+            .then(function(response){
+                return response.text()
+            })
+            .then(function(text){
+                console.log(text)
+                if(text == 0){
+                    marker.innerText = '❌'
+                }else{
+                    marker.innerText = '✅'
+                }
+            })
+            // 會有同源政策的問題(但是給後端做處理)
+        }
+
     }
 </script>
 
@@ -27,7 +47,7 @@
             ，goolgmap是用get，因為可以把地標資料用網址列分享給別人。
             也可以設定post，post的資料不會出現在網址列，有機密資料一定要用post -->
         <!-- id屬性給前端看，name屬性給後端看，通常取名會一樣，較方便 -->
-        帳號：<input name="uid" id="uid">
+        帳號：<input name="uid" id="uid">&nbsp<label id="marker"></label>
         <p></p>
         密碼：<input type="password" name="pwd" id="pwd">
         <p></p>
@@ -35,6 +55,7 @@
         <p></p>
         <input type="submit" id="mysubmit" value="註冊">
         <!-- id屬性要小心保留字，submit是保留字，所以id取名不能是submit -->
+        
     </form>
 
 </body>
