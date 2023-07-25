@@ -15,11 +15,12 @@
         // The location of Uluru
         const position = { lat: 24.157469859903532, lng: 120.66612112482075 }; // 地點的座標位置
         const position1 = { lat: 24.159757933161274, lng: 120.67013659790294 }; // 地點的座標位置
-        
+
         // Request needed libraries.
         //@ts-ignore
         const { Map } = await google.maps.importLibrary("maps");
         const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
+        
 
         // The map, centered at Uluru
         map = new Map(document.getElementById("map"), {
@@ -29,13 +30,18 @@
         });
 
         // The marker, positioned at Uluru
+        const pinView = new google.maps.marker.PinView({ // 可以修改紅色圖標的外觀
+            background: "orange"
+        });
+
         marker = new AdvancedMarkerView({  //  紅色圖標，由於要變成全域變數，原本前面的const要刪掉
             map: map,
             position: position, // 紅色圖標會跟著座標
             title: "國立自然科學博物館", // 游標移過去紅色圖標會產生文字
+            content: pinView.element // 為了要修改紅色圖標的外觀
         });
 
-        marker = new AdvancedMarkerView({  //  紅色圖標，由於要變成全域變數，原本前面的const要刪掉
+        marker = new AdvancedMarkerView({  //  紅色圖標
             map: map,
             position: position1, // 紅色圖標會跟著座標
             title: "肉蛋吐司", // 游標移過去紅色圖標會產生文字
@@ -54,7 +60,7 @@
         }
 
         bn1.onclick = function () {
-            let position = { lat: 24.150741190310896, lng: 120.65100344230298};
+            let position = { lat: 24.150741190310896, lng: 120.65100344230298 };
             marker.position = position;
             marker.title = "資展國際"
             // map.setCenter(position);
@@ -69,7 +75,7 @@
 </script>
 <style>
     /* 地圖的大小 */
-    #map {  
+    #map {
         height: 400px;
         /* The height is 400 pixels */
         width: 100%;
