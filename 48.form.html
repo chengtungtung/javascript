@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function(){
+        mysubmit.onclick = function(event){ // 要加參數event
+            event.preventDefault() // 原本要做的事停止動作，舉例：是否同意的頁面就是靠這個方法
+            // alert('hello')  // 所以這行就不會動作
+            if (pwd.value !== pwd_confirm.value){
+                alert('密碼不一致')
+            }else{
+                myform.submit()
+            }
+        }
+
+    }
+</script>
+
+<body>
+    <form id="myform" action="http://10.0.101.248/register.php" method="post">
+        <!-- action屬性是要接的檔案，method屬性預設為get，get的資料不會出現在網址列(會用&隔開，用name屬性的取名)，
+            ，goolgmap是用get，因為可以把地標資料用網址列分享給別人。
+            也可以設定post，post的資料不會出現在網址列，有機密資料一定要用post -->
+        <!-- id屬性給前端看，name屬性給後端看，通常取名會一樣，較方便 -->
+        帳號：<input name="uid" id="uid">
+        <p></p>
+        密碼：<input type="password" name="pwd" id="pwd">
+        <p></p>
+        密碼確認：<input type="password" name="pwd_confirm" id="pwd_confirm">
+        <p></p>
+        <input type="submit" id="mysubmit" value="註冊">
+        <!-- id屬性要小心保留字，submit是保留字，所以id取名不能是submit -->
+    </form>
+
+</body>
+
+</html>
