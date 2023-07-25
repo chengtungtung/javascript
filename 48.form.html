@@ -12,9 +12,9 @@
             event.preventDefault() // 原本要做的事停止動作，舉例：是否同意的頁面就是靠這個方法
             // alert('hello')  // 所以這行就不會動作
             if (pwd.value !== pwd_confirm.value){
-                alert('密碼不一致')
+                alert('密碼不一致') // 密碼框跟密碼確認框不一致時，跳提示窗顯示
             }else{
-                myform.submit()
+                myform.submit() // 若密碼框跟密碼確認框一致，將form用submit方法把資料傳給後端做處理
             }
         }
 
