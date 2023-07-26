@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+
+<script>
+    $(() => {
+        $('div')
+            .last()
+            .addClass('change')
+            .siblings()
+            .children()
+            .css({
+                'display': 'inline-block',
+                'margin': '5px',
+                'cursor': 'pointer'
+
+            })
+            .first()
+            .css({
+                'font-size': '16px',
+                'color': 'darkred'
+            })
+            .click(function () {
+                $(this)
+                    .parent()
+                    .siblings()
+                    .css({
+                        'font-size': '16px',
+                        'color': 'darkred'
+                    })
+            })
+            .parent()
+            .children()
+            .eq(1)
+            .css({
+                'font-size': '25px',
+                'color': 'darkorange'
+            })
+            .click(function () {
+                $(this)
+                    .parent()
+                    .siblings()
+                    .css({
+                        'font-size': '25px',
+                        'color': 'darkorange'
+                    })
+            })
+            .parent()
+            .children()
+            .last()
+            .css({
+                'font-size': '35px',
+                'color': 'darkgreen'
+            })
+            .click(function () {
+                $(this)
+                    .parent()
+                    .siblings()
+                    .css({
+                        'font-size': '35px',
+                        'color': 'darkgreen'
+                    })
+            })
+
+
+    })
+
+
+</script>
+<style>
+
+</style>
+
+<body>
+    <div>
+        <div>A</div>
+        <div>A</div>
+        <div>A</div>
+    </div>
+    <div>
+        太平山過去稱為眠腦，是泰雅族語森林茂密之意，不僅蘊藏了豐富的森林資源，孕育出的生態樣貌更是多采多姿!
+    </div>
+
+
+</body>
+
+
+</html>
