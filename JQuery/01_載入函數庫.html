@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<script>
+$(()=>{  // 相當於window.onload = function()
+    
+    // 方法一：設定按鈕點擊要做的事
+    // $('button').click(()=>{
+    //     $('label').html('Hello, World!')
+    // })
+
+    // 方法二：設定按鈕點擊要做的事
+    // $('button').on('click',function(){
+    //     $('label').html('Hi, World!')
+    // })  // 只要是label標籤都會抓
+
+    // 針對特定標籤操作
+    // $('button').on('click',function(){
+    //     $('#one').html('Hi, World!')
+    //     $('#two').html('Good Morning!')
+    // })  // 如果要針對某個標籤，要抓id名字，要用抓id的話，id名字前面要加#
+
+    // 事件監聽(滑鼠按鍵)
+    // $('button').on('mousedown',function(event){
+    //     $('#one').html('Hi, World!<br>')
+    //     $('#two').html(event.buttons)
+    // }) 
+    // 按滑鼠左鍵會印出1，按滑鼠右鍵會印出2，同時按滑鼠左右鍵會印出3，按滑鼠中鍵會印出4
+    
+    // 取消事件
+    // $('button').on('mousedown',function(event){
+    //     event.preventDefault() // 常用在超連結 
+    //     $('#one').html('Hi, World!<br>')
+    //     $('#two').html(event.buttons)
+    // }) 
+
+    // 選取器 class
+    $('.aaa').on('mousedown',function(event){
+        $('#one').html('Hi, World!<br>')
+        $('#two').html(event.buttons)
+    }) 
+})
+
+
+</script>
+
+<body>
+
+</body>
+<button class="aaa">Click</button>
+<p></p>
+<label id="one"></label><p></p>
+<label id="two"></label>
+
+</html>
