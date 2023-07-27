@@ -30,7 +30,7 @@
                 $('div')
                     .first()
                     .siblings()    
-                    .append($(element))
+                    .append($(element))                                                                                                                                                          
             })
             
         })
@@ -42,8 +42,10 @@
 </script>
 <style>
     .table{
-        width: 30px;
-        height: 30px;
+        display: grid;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+        gap: 8px;
     }
 
 </style>

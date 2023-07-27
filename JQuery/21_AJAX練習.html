@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<script>
+    function inc(sender, value) {
+        let price = parseInt($(sender).parent().siblings().eq(2).text())
+        let quantity = parseInt($(sender).parent().siblings().eq(3).text())
+        quantity += value
+        if (quantity == 0) {
+            del(sender)
+        } else {
+            let total = price * quantity
+            $(sender).parent().siblings().eq(3).text(quantity)
+            $(sender).parent().siblings().eq(4).text(total)
+            console.log(price)
+        }
+    }
+
+    function del(sender) {
+        if (confirm('Are you sure?')) {
+            $(sender)
+                .parent()
+                .parent()
+                .remove()
+        }
+    }
+
+
+
+
+    $(() => {
+        $.ajax({ // ajax是非同步呼叫
+            
+            method: 'get', // 預設為get，可以寫get或post
+            url: 'https://raw.githubusercontent.com/kirkchu/mongodb/main/product.json',
+            success: function (result) {
+                let jsonObj = JSON.parse(result)
+                let proid  
+                let s = `
+                    <table border="1" style="border: 2px solid black;">
+                        <tr>
+                            <th>圖片</th>
+                            <th>項目</th>
+                            <th>單價</th>
+                            <th>數量</th>
+                            <th>小計</th>
+                            <th>操作</th>
+                        </tr>
+                `
+                $.each(jsonObj, function (index, product) {
+                    s += `
+                        <tr id='${product.pid}'>
+                            <td><img src="${product.image}" width="100"></td>
+                            <td>${product.name}</td>
+                            <td>${product.price}</td>
+                            <td>${product.quantity}</td>
+                            <td>${product.price * product.quantity}</td>
+                            <td>
+                                <button>+</button>
+                                <button>-</button>
+                                <button>刪除</button>
+                            </td>
+                        </tr>
+                    `
+
+                })
+                s += '</table>'
+                $('#product').html(s)
+
+                $('#P01')
+                    .children()
+                    .last()
+                    .children()
+                    .first()
+                    .click(function () {
+                        inc(this, 1)
+                    })
+                    .siblings()
+                    .eq(0)
+                    .click(function () {
+                        inc(this, -1)
+                    })
+                    .siblings()
+                    .eq(1)
+                    .click(function () {
+                        del(this)
+                    })
+
+                $('#P02')
+                    .children()
+                    .last()
+                    .children()
+                    .first()
+                    .click(function () {
+                        inc(this, 1)
+                    })
+                    .siblings()
+                    .eq(0)
+                    .click(function () {
+                        inc(this, -1)
+                    })
+                    .siblings()
+                    .eq(1)
+                    .click(function () {
+                        del(this)
+                    })
+
+                $('#P03')
+                    .children()
+                    .last()
+                    .children()
+                    .first()
+                    .click(function () {
+                        inc(this, 1)
+                    })
+                    .siblings()
+                    .eq(0)
+                    .click(function () {
+                        inc(this, -1)
+                    })
+                    .siblings()
+                    .eq(1)
+                    .click(function () {
+                        del(this)
+                    })
+
+
+
+
+
+
+            }
+        })
+
+    })
+
+</script>
+
+<body>
+    <div id="product"></div>
+
+
+
+
+</body>
+
+</html>
