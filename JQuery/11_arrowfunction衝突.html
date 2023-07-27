@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<script>
+    $(() => {
+        let n = 0
+
+        // 一般方式
+        // $('button').click(function () {
+        //     $(this).text(n)
+        //     n += 1
+        // })
+
+
+        // arrowfunction 有時候沒辦法用jquery，會有問題，沒有作用
+        // arrowfunction在jquery中跟this衝突
+        // $('button').click(() => {
+        //     $(this).text(n)
+        //     n += 1
+        // })
+        // this是保留字
+
+
+        // 若要用arrowfunction的解法
+        $('button').click((event) => {
+            $(event.currentTarget).text(n)
+            n += 1
+        })
+        // 將this換成event.currentTarget
+        // event.currentTarget是指事件作用的那個元件
+
+    
+    })
+
+</script>
+
+<body>
+
+    <button>click</button>
+
+
+
+</body>
+
+</html>

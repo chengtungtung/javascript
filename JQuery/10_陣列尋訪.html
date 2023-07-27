@@ -10,18 +10,50 @@
 <script>
     $(() => {
         let colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'purple']
-        $.each(colors,function(index,element){
-            $('li')
-                .eq(index)
-                .css('background-color',element)
+        // $.each(colors,function(index,element){
+        //     $('li')
+        //         .eq(index)
+        //         .css('background-color',element)
+        // })
+
+        $('li').each(function(index, element){
+            $(element)
+                .css('background-color', colors[index])
         })
 
+        $('button')
+            .eq(0)
+            .click(function(){
+                $('ul')
+                    .first()
+                    .show(600)
+            })
 
+        $('button')
+            .eq(1)
+            .click(function(){
+                $('ul')
+                    .first()
+                    .hide(600)
+            })
+
+        $('button')
+            .eq(2)
+            .click(function(){
+                $('ul')
+                    .first()
+                    .toggle(600)
+            })
 
     })   
 </script>
 
 <body>
+    <div>
+        <button>show</button>
+        <button>hide</button>
+        <button>toggle</button>
+    </div>
     <ul>
         <li>aaa</li>
         <li>bbb</li>

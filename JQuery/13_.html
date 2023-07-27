@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<script>
+    $(() => {
+        $('body')
+            .append('<div>hi</div>') // append是加在最後面
+            .prepend('aaa<hr>') // prepend是加在最前面
+
+
+         $('button').click(function(){
+            $('ul').prepend($('#target')) // 會移動
+            $('ul').append($('#target1')) // 會移動
+
+         })
+            
+
+    })
+
+</script>
+
+<body>
+    
+    <div><button>click</button></div>
+    <label>Hello</label>
+    <li id="target">Hello</li>
+    <li id="target1">world</li>
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+    </ul>
+
+</body>
+
+</html>
