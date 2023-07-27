@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<script>
+    $(() => {
+
+        $('button').click(function(){
+
+            
+            let arr = $('div div')
+        
+            for(i=arr.length ; i>0 ; i--){
+                let a = parseInt(Math.random()*i)
+                let temp = arr[a]
+                arr[a] = arr[i-1] 
+                arr[i-1] = temp
+            }
+            
+            // $.each(arr, function (index, element) {
+            //     console.log(index , element)
+            // })
+
+            $.each(arr, function (index, element) {
+                $('div')
+                    .first()
+                    .siblings()    
+                    .append($(element))
+            })
+            
+        })
+
+    })
+
+
+
+</script>
+<style>
+    .table{
+        width: 30px;
+        height: 30px;
+    }
+
+</style>
+
+<body>
+    <div>
+        <button>Random</button>
+
+    </div>
+    <div class="table" >
+        <!-- <div> -->
+            <div style="background-color: red;">1</div>
+            <div style="background-color: orange;">2</div>
+            <div style="background-color: yellow;">3</div>
+        <!-- </div> -->
+        <!-- <div> -->
+            <div style="background-color: green;">4</div>
+            <div style="background-color: blue;">5</div>
+            <div style="background-color: purple;">6</div>
+        <!-- </div> -->
+        <!-- <div> -->
+            <div style="background-color: gray;">7</div>
+            <div style="background-color: cadetblue;">8</div>
+            <div style="background-color: pink;">9</div>
+        <!-- </div> -->
+    </div>
+</body>
+
+</html>

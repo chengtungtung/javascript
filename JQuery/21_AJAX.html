@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<script>
+    $(()=>{
+        $.ajax({
+            url:'https://raw.githubusercontent.com/kirkchu/mongodb/main/product.json',
+            success : function(result){
+                let jsonObj = JSON.parse(result)
+                let s =`
+                    <table border="1">
+                        <tr>
+                            <th>圖片</th>
+                            <th>項目</th>
+                            <th>單價</th>
+                            <th>數量</th>
+                            <th>小計</th>
+                        </tr>
+                `
+                $.each(jsonObj, function(index, product){
+                    s +=`
+                        <tr>
+                                <td><img src="${product.image}" width="100"></td>
+                                <td>${product.name}</td>
+                                <td>${product.price}</td>
+                                <td>${product.quantity}</td>
+                                <td>${product.price*product.quantity}</td>
+                        </tr>
+                    `
+                    
+                })
+                s += '</table>'
+                $('#product').html(s)
+
+            }
+        })
+    })
+
+</script>
+<body>
+    <div id="product"></div>
+    
+  
+</body>
+
+</html>

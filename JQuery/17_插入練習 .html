@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<script>
+    $(() => {
+
+
+
+        let count = 0
+        $('li').click(function (event) {
+            count++
+            if (count == 1) {
+                $(this)
+                    .addClass('color1')
+            } else if (count == 2) {
+                $(this)
+                    .addClass('color2')
+            } else {
+
+            }
+        })
+
+        $('button').click(function () {
+            let index1
+            let index2
+            $('li').each(function (index, element) {
+                if ($(element).hasClass('color1')) {
+                    index1 = index
+                }
+                if ($(element).hasClass('color2')) {
+                    index2 = index
+                }
+            })
+
+
+            // console.log(index1)
+            // console.log(index2)
+            let arr = $('li')
+            // console.log(arr)
+            let tmp = arr[index1]
+            arr[index1] = arr[index2]
+            arr[index2] = tmp
+            // console.log(arr)
+            $.each(arr, function (index, element) {
+                $('ul').append($(element))
+            })
+
+        })
+
+
+    })
+
+</script>
+
+<style>
+    .color1 {
+        background-color: darkorange;
+    }
+
+    .color2 {
+        background-color: darkgreen;
+    }
+</style>
+
+<body>
+
+    <div><button>click</button></div>
+
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li>ccc</li>
+        <li>ddd</li>
+        <li>eee</li>
+    </ul>
+
+</body>
+
+</html>
