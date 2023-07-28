@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<script>
+$(() => {
+   $('#a').draggable({
+       start: function(event, ui) {
+           $(this).css('cursor', 'grabbing')
+           $('#b')
+               .css('background-color', 'orange')
+               .css('opacity', '1')
+       },
+       stop: function(event, ui) {
+           $(this).css('cursor', 'grab')           
+           $('#b').animate({
+               opacity: 0
+           }, 2000)
+       }
+   })
+   $('#b').droppable({
+       drop: function(event, ui) {
+           let el = $(ui.draggable)
+           $(this).css('background-color', el.css('background-color'))
+           $(this).html(el.html())
+           el.remove()
+       }
+   })
+})
+</script>
+<style>
+.aaa {
+   position: relative;
+   background-color: aquamarine;
+   width: fit-content;
+   z-index: 10;
+   cursor: grab;
+}
+.bbb {
+   position: relative;
+   top: 300px;
+   width: 100px;
+   height: 100px;
+   /* background-color: orange; */
+}
+</style>
+<body>
+   <div id="a" class="aaa">Hi, World!</div>
+   <div id="b" class="bbb"></div>
+</body>
+</html>

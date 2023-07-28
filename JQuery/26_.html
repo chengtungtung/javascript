@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<script>
+    $(() => {
+        $('#aaa').accordion({  // 可以展開
+            active: 2, // 一開始就展開索引值2
+            heightStyle: 'content', // 根據文章大小，展開跟文章大小一樣的格子
+            create: function(event, ui){
+                $('.ui-accordion-header-active').css({  // .ul-according-header-active 這個class是指開頭2023年、2022年的區塊
+                
+                    'border':'1px solid #0e4b05',
+                    'background-color':'green'
+                })
+            },
+            beforeActivate: function(event, ui){
+                ui.newHeader.css({
+                    'border':'1px solid #0e4b05',
+                    'background-color':'green'
+                })
+
+                ui.oldHeader.css({
+                    'border':'1px solid #c5c5c5',
+                    'background-color':'#f6f6f6'
+                })
+            }
+
+        })
+
+    })
+</script>
+
+<body>
+    <div id="aaa">
+        <h1>2023年</h1>
+        <div>
+            <p>
+                美國健康與營養網站「這樣吃才對」報導，有一種常識被冠上高深莫測的名詞：禁食有氧（fasted cardio），乍聽之下像是了不起的學問，但說穿了就是空腹做有氧運動，特別是指早餐之前可以大量流汗的運動。
+            </p>
+            <p>
+                包括珍妮佛羅培茲在內的許多大人都信誓旦旦地說，空腹做有氧效果超好。
+            </p>
+        </div>
+        <h1>2022年</h1>
+        <div>
+            不久前，英國巴斯大學（University of Bath）在《臨床內分泌和代謝雜誌》（Journal of Clinical Endocrinology and
+            Metabolism）發表一項研究：在進食第一餐之前做完有氧運動的人，脂肪燃燒量會比進餐之後的人多出一倍，而且整整6週實驗期都不變。
+        </div>
+        <h1>2021年</h1>
+        <div>
+            受試者原本都是一群慣於久坐，但身體健康的男性。A組照常過原來的生活，B組則是每天清早戴上健身追蹤器踩健身腳踏車。B組再分成B1與B2，研究人員先讓前者喝奶昔才開始運動，後者則是開水調製的偽奶昔。最終，喝到偽奶昔的B2受試者消耗的卡路里多出一倍。
+        </div>
+
+    </div>
+</body>
+
+</html>

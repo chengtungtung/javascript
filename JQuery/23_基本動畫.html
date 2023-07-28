@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+</head>
+<script>
+    $(()=>{
+        let count = true
+        $('#bn').click(function(){
+        
+            if(count){
+                $('#a').animate({
+                    
+                    top: '+=200',  // +=200之間不能有空白，不然動畫跑不起來
+                    opacity: 0  // 透明度，0代表會漸漸消失
+                    
+                },'slow')
+                count = false
+            }else{
+                $('#a').animate({
+                    
+                    top: '-=200',  
+                    opacity: 1
+                    
+                },'slow')
+                count = true
+            }
+        })
+
+        $('#bn1').click(function(){
+            let degree = 0 
+            $('#a').animate({
+                    left: '+=200'      
+                },{
+                    duration: 'slow',
+                    step: function(now, fx){
+                        $('#a').css('transform',`rotate(${degree}deg)`)
+                        degree += 20
+
+                    }
+                
+                })
+        })
+
+        $('#bn2').click(function(){
+            let degree = 0 
+            $('#a').animate({
+                    left: '-=200'   // 座標移動   
+                },{
+                    duration: 200,  // 移動速度
+                    step: function(now, fx){
+                        $('#a').css('transform',`rotate(${degree}deg)`)
+                        degree += 30
+
+                    }
+                
+                })
+        })
+
+    })
+</script>
+<style>
+    .aaa{
+        position: relative;
+        background-color: darkolivegreen;
+        width: fit-content;
+    }
+</style>
+<body>
+    <button id="bn">上下移動</button>
+    <button id="bn1">右旋轉</button>
+    <button id="bn2">左旋轉</button><p></p>
+    <div id="a" class="aaa">Hello, World</div>
+    
+</body>
+</html>

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 </head>
 <script>
     function inc(sender, value) {
@@ -23,27 +24,41 @@
         }
     }
 
-
+    let whichButton
     function del(sender) {
-        if (confirm('Are you sure?')) {
-            $(sender)
-                .parent()
-                .parent()
-                .animate({
-                    opacity: 0
-                }, 400, function () {
-                    $(sender)
-                        .parent()
-                        .parent()
-                        .remove()
 
-                })
-        }
+        $('#dialog').dialog('open')
+        whichButton = sender
+
     }
 
 
     $(() => {
-        
+        $('#dialog').dialog({
+            autoOpen: false, // 預設會自動顯示，所以設定為false，一開始開網頁不會跳出來
+            buttons: {
+                '確定': function () {
+                    $(whichButton)
+                        .parent()
+                        .parent()
+                        .animate({
+                            opacity: 0
+                        }, 400, function () {
+                            $(whichButton)
+                                .parent()
+                                .parent()
+                                .remove()
+
+                        })
+                    $(this).dialog('close')
+
+
+                },
+                '取消': function () {
+                    $(this).dialog('close')
+                }
+            }
+        })
 
         $.ajax({
             method: 'get',
@@ -87,6 +102,9 @@
 <body>
     <div id="product"></div>
 
+    <div id="dialog" title="購物車操作">
+        是否確定刪除此產品？
+    </div>
 
 </body>
 
