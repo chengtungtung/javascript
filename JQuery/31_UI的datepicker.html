@@ -24,9 +24,11 @@
             showButtonPanel: true, // 多了關閉按鈕
             dateFormat: '西元yy年mm月dd日',  // 日期格式化
             beforeShow: function (input, inst) {
+                console.log(inst)
                 title = $(inst.input).val()
             },
             onSelect: function (dateText, inst) {
+                console.log(dateText)
                 $(inst.input).siblings().text(dateText)
             },
             onClose: function (dateText, inst) {
