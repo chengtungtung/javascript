@@ -14,6 +14,9 @@
         $('#bar').progressbar({
             // value:30 // 進度條全部是100%，目前顯示30%
         })
+        .find('.ui-widget-header') // 尋找ui-widget-header類別
+        .css('background-color', 'darkorange')
+
 
         $('#slider').slider({   // 可以拖動
             slide: function (event, ui) {
@@ -46,6 +49,13 @@
         top: 50%;
         transform: translate(-50%, -50%);
     }
+
+    .ui-slider-handle{
+        text-align: center;
+        font-size: small;
+        padding: 5px;
+    }
+
 </style>
 
 <body>

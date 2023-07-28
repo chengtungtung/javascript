@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="datepicker-zh-TW.js"></script>
+
+</head>
+<script>
+    $(() => {
+        $('#datepicker').datepicker({
+            regional: 'zh-TW'
+        })
+
+        let title
+        $('input[type="button"]').datepicker({
+            changeYear: true, // 年選單
+            changeMonth: true, // 月選單
+            showButtonPanel: true, // 多了關閉按鈕
+            dateFormat: '西元yy年mm月dd日',  // 日期格式化
+            beforeShow: function (input, inst) {
+                title = $(inst.input).val()
+            },
+            onSelect: function (dateText, inst) {
+                $(inst.input).siblings().text(dateText)
+            },
+            onClose: function (dateText, inst) {
+                $(this).val(title)
+            }
+
+        })
+
+
+        $('#end_datepicker').datepicker({
+            onSelect: function (dateText, inst) {
+                $('#end_date').text(dateText)
+            },
+            onClose: function (dateText, inst) {
+                $(this).val('結束日期')
+            }
+        })
+    })
+
+
+
+</script>
+<style>
+
+
+</style>
+
+<body>
+    Date：<input id="datepicker">
+    <p></p>
+    <p></p>
+    <div>
+        <input type="button" id="start_datepicker" value="開始日期">
+        <label id="start_date"></label>
+    </div>
+    <br>
+    <div>
+        <input type="button" id="end_datepicker" value="結束日期">
+        <label id="end_date"></label>
+    </div>
+
+
+
+</body>
+
+</html>
