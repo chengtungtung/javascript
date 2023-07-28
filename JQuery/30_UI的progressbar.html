@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+</head>
+<script>
+    $(() => {
+        $('#bar').progressbar({
+            // value:30 // 進度條全部是100%，目前顯示30%
+        })
+
+        $('#slider').slider({   // 可以拖動
+            slide: function (event, ui) {
+                $('#bar').progressbar('value', ui.value)
+                $('.ui-slider-handle').text(ui.value)
+                $('.ui-slider-handle').css({
+                    'text-align': 'center',
+                    'font-size': 'small',
+                    'padding': '5px'
+
+                })
+                $('.label').text(`${ui.value}%`)
+
+            }
+        })
+
+
+    })
+</script>
+<style>
+    .progressbar {
+        position: relative;
+        width: 300pt;
+        background-color: bisque;
+    }
+
+    .label {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<body>
+    <div class="progressbar">
+        <div id="bar"></div>
+        <div class="label"></div>
+    </div>
+    <div id="bar"></div>
+    <p></p>
+    <div id="slider" style="margin: 20px;">
+        <div class="ui-slider-handle">0</div> <!-- 類別是固定的，讓數字可以顯示在指示器上 -->
+    </div>
+
+</body>
+
+</html>

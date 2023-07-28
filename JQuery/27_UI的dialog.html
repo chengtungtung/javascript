@@ -35,7 +35,9 @@
 
     $(() => {
         $('#dialog').dialog({
-            autoOpen: false, // 預設會自動顯示，所以設定為false，一開始開網頁不會跳出來
+            autoOpen: false, // 預設是true，會自動顯示，所以設定為false，一開始開網頁不會跳出來
+            modal: true,
+            draggable: false, // 不能拖動對話框
             buttons: {
                 '確定': function () {
                     $(whichButton)
